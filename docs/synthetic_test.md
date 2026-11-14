@@ -1,5 +1,11 @@
 # Representative synthetic rename verification
 
+- Created: 14 November 2026
+- Last updated: 14 November 2026
+- Status: Representative synthetic verification procedure
+- Related framing: [Project rename guide](conversations_after_folder_rename.md)
+- Related issue: [Issue #76](https://github.com/jeromeetienne/coding_agent_plugins/issues/76)
+
 Procedure defined for [issue #76](https://github.com/jeromeetienne/coding_agent_plugins/issues/76).
 This document specifies acceptance before the representative fixture is built. A result is pending until its raw evidence exists. Unit tests alone do not establish acceptance.
 
@@ -112,7 +118,7 @@ On success, save compact reports and logs outside the disposable root, confirm a
 
 ## Current evidence
 
-The representative success run passed after the fs-extra correction; baseline failure and measured results are recorded in [SYNTHETIC_RESULTS.md](SYNTHETIC_RESULTS.md). The complete matrix and actual client coverage must be evaluated separately; a success run alone does not close issue #76.
+The representative success run passed after the fs-extra correction; baseline failure and measured results are recorded in [synthetic_results.md](synthetic_results.md). The complete matrix and actual client coverage must be evaluated separately; a success run alone does not close issue #76.
 
 ### Isolation attempt, 14 November 2026
 
@@ -137,7 +143,7 @@ Claude Code exited with status 1. Relevant raw result fields:
 {"is_error":true,"num_turns":1,"terminal_reason":"api_error","result":"Not logged in · Please run /login"}
 ```
 
-Full raw output remains in `codex.log`, `codex-network.log`, and `claude.log` below `/private/tmp/rename-76-isolation-fln68gxl`. These temporary logs are local evidence, not published acceptance artifacts. Neither client returned the fact in this initial attempt. The developer subsequently authorized reuse of account credentials in disposable stores; successful live checks and later representative runs are recorded in SYNTHETIC_RESULTS.md. This failed initial attempt is retained as historical evidence, not as the current gate status.
+Full raw output remains in `codex.log`, `codex-network.log`, and `claude.log` below `/private/tmp/rename-76-isolation-fln68gxl`. These temporary logs are local evidence, not published acceptance artifacts. Neither client returned the fact in this initial attempt. The developer subsequently authorized reuse of account credentials in disposable stores; successful live checks and later representative runs are recorded in synthetic_results.md. This failed initial attempt is retained as historical evidence, not as the current gate status.
 
 ### Existing-suite baseline, 14 November 2026
 

@@ -38,4 +38,4 @@ On 14 November 2026, Node.js 24.14.0 and pnpm 10.33.2 installed the standalone p
 
 The complete test run passed 48 of 49 tests in 117.206 seconds. One test stopped at the existing 4 GiB free-space reserve while other test fixtures consumed disk space. The isolated retry passed in 8.938 seconds and rejected all six corruption classes and formatting-only restoration corruption. All 49 tests therefore passed across the full run and the isolated retry; the full run did not pass in one attempt.
 
-The full run exercised synthetic rename, backup, verification, worker execution, and restoration. This extraction adds no new live application verification. See verification_history.md and SYNTHETIC_RESULTS.md for earlier results and their limits.
+The full run exercised synthetic rename, backup, verification, worker execution, and restoration. This extraction adds no new live application verification. See [verification history](verification_history.md) and [synthetic results](synthetic_results.md) for earlier results and their limits.

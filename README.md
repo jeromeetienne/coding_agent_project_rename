@@ -56,7 +56,7 @@ Tests stay in [tests](tests), beside [src](src). Strict TypeScript targets ES202
 
 The earlier synthetic testbed used `rename_agent_test_project`, synthetic files, three new Claude Code conversations, and three new Codex conversations. All six were selected from the normal pickers after renaming, recalled their distinct earlier facts, and wrote verification files in the renamed folder. Actual user projects and existing conversations were excluded. See the [testing evidence and recovery notes](docs/verification_history.md) and [implementation issue](https://github.com/jeromeetienne/coding_agent_plugin/issues/64).
 
-The [representative synthetic test procedure](SYNTHETIC_TEST.md) defines the ordered acceptance work for issue #76, including scale targets, independent checks, faults, resource limits, and evidence requirements. The [measured results](SYNTHETIC_RESULTS.md) distinguish passing cases, confirmed defects, and remaining coverage.
+The [representative synthetic test procedure](docs/synthetic_test.md) defines the ordered acceptance work for issue #76, including scale targets, independent checks, faults, resource limits, and evidence requirements. The [measured results](docs/synthetic_results.md) distinguish passing cases, confirmed defects, and remaining coverage.
 
 ## Installation
 

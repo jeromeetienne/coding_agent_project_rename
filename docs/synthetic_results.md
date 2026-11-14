@@ -1,6 +1,12 @@
 # Representative synthetic verification results
 
-Evidence for [issue #76](https://github.com/jeromeetienne/coding_agent_plugins/issues/76), measured on 14 November 2026. Read [the procedure](SYNTHETIC_TEST.md) before reproducing a case. No real project rename is recommended by these results.
+- Created: 14 November 2026
+- Last updated: 14 November 2026
+- Status: Historical representative synthetic verification evidence
+- Related framing: [Project rename guide](conversations_after_folder_rename.md)
+- Related issue: [Issue #76](https://github.com/jeromeetienne/coding_agent_plugins/issues/76)
+
+Evidence for [issue #76](https://github.com/jeromeetienne/coding_agent_plugins/issues/76), measured on 14 November 2026. Read [the procedure](synthetic_test.md) before reproducing a case. No real project rename is recommended by these results.
 
 ## Environment and independent fixture
 
