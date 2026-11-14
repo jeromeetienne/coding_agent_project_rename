@@ -1,4 +1,4 @@
-# Directory Context: `/packages/rename_agent_project/src/migration`
+# Directory Context: `/src/migration`
 
 ## Purpose
 

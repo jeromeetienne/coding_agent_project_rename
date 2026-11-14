@@ -1,5 +1,5 @@
 {
-  "name": "rename_agent_project",
+  "name": "coding_agent_project_rename",
   "private": true,
   "type": "module",
   "engines": {
@@ -26,5 +26,6 @@
   },
   "exports": {
     ".": "./src/index.ts"
-  }
+  },
+  "packageManager": "pnpm@10.33.2"
 }

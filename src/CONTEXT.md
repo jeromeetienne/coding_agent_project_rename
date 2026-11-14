@@ -1,8 +1,8 @@
-# Directory Context: `/packages/rename_agent_project/src`
+# Directory Context: `/src`
 
 ## Purpose
 
-Provide the public package interface and the command-line entry point for rename_agent_project.
+Provide the public package interface and the command-line entry point for coding_agent_project_rename.
 
 ## Key Exports & Entry Points
 
@@ -10,7 +10,7 @@ Provide the public package interface and the command-line entry point for rename
 - `cli.ts`: all supported command-line options and operation dispatch.
 - `migration/`: conversation discovery, migration plans, storage changes, and shared types; see [CONTEXT.md](migration/CONTEXT.md).
 - `operation/`: independent execution, manual client closure checks, project backup, rename, verification, and recovery; see [CONTEXT.md](operation/CONTEXT.md).
-- Command from the repository root: `pnpm --filter rename_agent_project start --help`.
+- Command from the repository root: `pnpm start --help`.
 
 ## Rules
 

@@ -1,8 +1,8 @@
-# Directory Context: `/packages/rename_agent_project`
+# Directory Context: `/`
 
 ## Purpose
 
-Own the rename_agent_project tool and its package configuration.
+Own the coding_agent_project_rename tool and its package configuration.
 
 ## Key Exports & Entry Points
 
@@ -22,5 +22,5 @@ Own the rename_agent_project tool and its package configuration.
 
 ## Background
 
-- [Repository context](../../CONTEXT.md)
+- [Migration](https://github.com/jeromeetienne/coding_agent_plugins/issues/79)
 - https://github.com/jeromeetienne/coding_agent_plugin/issues/61

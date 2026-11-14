@@ -36,7 +36,7 @@ export class Cli {
 			}
 		}
 		const command = new Command();
-		command.name('rename_agent_project')
+		command.name('coding_agent_project_rename')
 			.description('Rename a project folder and preserve its Codex and Claude Code conversations.')
 			.option('--from <path>', 'Old absolute project directory')
 			.option('--to <path>', 'New absolute project directory')

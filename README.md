@@ -1,4 +1,4 @@
-# rename_agent_project
+# coding_agent_project_rename
 
 Rename a local repository folder and keep its Codex and Claude Code conversations available when you open the renamed folder normally.
 
@@ -11,16 +11,16 @@ Requires Node.js 24 or later and pnpm. Install dependencies with `pnpm install` 
 Preview a rename:
 
 ```bash
-pnpm --filter rename_agent_project start --from /absolute/project --to /absolute/project-renamed
+pnpm start --from /absolute/project --to /absolute/project-renamed
 ```
 
 Add `--apply` to perform the complete rename. A private backup and operation directory is chosen automatically beside the project. The command prints that directory for status and recovery. The shared Codex server and unrelated clients stay running. The tool never sends shutdown signals.
 
 ```bash
-pnpm --filter rename_agent_project start --status /absolute/operation-directory
-pnpm --filter rename_agent_project start --status /absolute/operation-directory --watch
-pnpm --filter rename_agent_project start --restore /absolute/operation-directory
-pnpm --filter rename_agent_project start --restore /absolute/operation-directory --apply
+pnpm start --status /absolute/operation-directory
+pnpm start --status /absolute/operation-directory --watch
+pnpm start --restore /absolute/operation-directory
+pnpm start --restore /absolute/operation-directory --apply
 ```
 
 Codex migration updates both the index association and the initial transcript metadata path, because normal pickers can use filesystem metadata rather than the index. Message and tool-history records and paginated history remain unchanged. Both metadata changes have verified backups and checked restoration. Transcript modification times remain unchanged so recent conversations retain their place in normal pickers.
@@ -48,12 +48,31 @@ Keep affected clients closed until completion. The command checks for reopened a
 ## Development and evidence
 
 ```bash
-pnpm --filter rename_agent_project test
-pnpm --filter rename_agent_project check
+pnpm test
+pnpm check
 ```
 
 Tests stay in [tests](tests), beside [src](src). Strict TypeScript targets ES2020 and runs through `tsx`. [src/index.ts](src/index.ts) exports the package interface; implementation belongs in [src/migration](src/migration) and [src/operation](src/operation).
 
-The earlier synthetic testbed used `rename_agent_test_project`, synthetic files, three new Claude Code conversations, and three new Codex conversations. All six were selected from the normal pickers after renaming, recalled their distinct earlier facts, and wrote verification files in the renamed folder. Actual user projects and existing conversations were excluded. See the [testing evidence and recovery notes](../../docs/tools/rename_agent_project/verification_history.md) and [implementation issue](https://github.com/jeromeetienne/coding_agent_plugin/issues/64).
+The earlier synthetic testbed used `rename_agent_test_project`, synthetic files, three new Claude Code conversations, and three new Codex conversations. All six were selected from the normal pickers after renaming, recalled their distinct earlier facts, and wrote verification files in the renamed folder. Actual user projects and existing conversations were excluded. See the [testing evidence and recovery notes](docs/verification_history.md) and [implementation issue](https://github.com/jeromeetienne/coding_agent_plugin/issues/64).
 
 The [representative synthetic test procedure](SYNTHETIC_TEST.md) defines the ordered acceptance work for issue #76, including scale targets, independent checks, faults, resource limits, and evidence requirements. The [measured results](SYNTHETIC_RESULTS.md) distinguish passing cases, confirmed defects, and remaining coverage.
+
+## Installation
+
+```bash
+git clone https://github.com/jeromeetienne/coding_agent_project_rename.git
+cd coding_agent_project_rename
+pnpm install --frozen-lockfile
+pnpm start --help
+```
+
+The package is used from this checkout and is not published to the npm registry. Existing backup directories and lock names keep the rename_agent_project prefix so recovery behavior remains unchanged.
+
+## Repository migration and open work
+
+The package and its relevant Git history were extracted from coding_agent_plugins for [issue #79](https://github.com/jeromeetienne/coding_agent_plugins/issues/79). Earlier commit messages retain their original issue numbers; those numbers refer to coding_agent_plugins. Historical verification evidence retains the commands and paths used in the original runs.
+
+Open work remains tracked at its original discussion:
+- [Preserve nested directory permissions in project backups (#75)](https://github.com/jeromeetienne/coding_agent_plugins/issues/75).
+- [Clean generated artifacts and choose future operation storage (#86)](https://github.com/jeromeetienne/coding_agent_plugins/issues/86).

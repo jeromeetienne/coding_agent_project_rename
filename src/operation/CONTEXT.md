@@ -1,4 +1,4 @@
-# Directory Context: `/packages/rename_agent_project/src/operation`
+# Directory Context: `/src/operation`
 
 ## Purpose
 

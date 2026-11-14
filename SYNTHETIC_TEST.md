@@ -7,7 +7,7 @@ This document specifies acceptance before the representative fixture is built. A
 
 1. Record installed Node.js, pnpm, Git, Codex, and Claude Code versions, free disk space, operating system, and the source revision as a remote commit link.
 2. Prove that both installed command-line clients can create and resume one new conversation in disposable application storage. Give each conversation a unique fact in a nonempty project. Disable inherited project integrations. Check stored identity, transcript, and project association after the first turn and the resumed turn. A version command or an unauthenticated startup does not pass this check. Never copy private history into the disposable stores.
-3. Generate the fixture specified below. Independently validate the fixture before invoking rename_agent_project. Save a baseline report before correcting any defect.
+3. Generate the fixture specified below. Independently validate the fixture before invoking coding_agent_project_rename. Save a baseline report before correcting any defect.
 4. Run the complete rename and restoration matrix. Correct confirmed failures, then run the identical matrix and resource limits again. Keep baseline and corrected reports separately.
 5. Run the real clients against the renamed fixture. Resume by identity and through each client's normal project conversation picker, confirm the unique earlier facts, and write a verification file inside the renamed project. Repeat after restoration. The coding agent performs these checks; the developer does not repeat routine tests.
 
@@ -40,7 +40,7 @@ Records contain deterministic varied text, sequence numbers, tool arguments, out
 
 ## Independent verification
 
-The fixture generator and verifier must not import rename_agent_project's snapshot, hashing, discovery, migration, or verification functions. Use filesystem `lstat`, symbolic link reads, streaming SHA-256, independent JSON record parsing, and read-only SQLite queries. Verify the independent inventory against exact target counts and distributions, not merely against the generator's own summary.
+The fixture generator and verifier must not import coding_agent_project_rename's snapshot, hashing, discovery, migration, or verification functions. Use filesystem `lstat`, symbolic link reads, streaming SHA-256, independent JSON record parsing, and read-only SQLite queries. Verify the independent inventory against exact target counts and distributions, not merely against the generator's own summary.
 
 Before rename, independently save project bytes, modes, empty directories, link text, Git worktree locations, transcript modification times, conversation identities and ordered history, unrelated rows, and missing transcript rows. Verify that recent native conversations retain their normal picker position after transcript metadata changes. After rename, verify expected structured path changes while preserving every other field and history order. Compare backup bytes and modes against the original inventory. Verify Git operations from every worktree. After restoration, compare original bytes and associations exactly; separately account for verification turns added by real clients. Newer user work must never be overwritten.
 
@@ -52,7 +52,7 @@ From the temporary worktree, install and run the existing baseline:
 
 ```bash
 pnpm install --frozen-lockfile
-pnpm --filter rename_agent_project start --help
+pnpm start --help
 pnpm test
 pnpm check
 ```
@@ -60,8 +60,8 @@ pnpm check
 Run the generator, independent verifier, real command-line rename, and restoration with:
 
 ```bash
-PATH="/usr/local/bin:$PATH" pnpm --filter rename_agent_project synthetic --profile full --seed issue-76-v2 --evidence /private/tmp/rename-76-full
-PATH="/usr/local/bin:$PATH" pnpm --filter rename_agent_project synthetic:faults --profile full --phase all --mode all --evidence /private/tmp/rename-76-faults
+PATH="/usr/local/bin:$PATH" pnpm synthetic --profile full --seed issue-76-v2 --evidence /private/tmp/rename-76-full
+PATH="/usr/local/bin:$PATH" pnpm synthetic:faults --profile full --phase all --mode all --evidence /private/tmp/rename-76-faults
 ```
 
 Each evidence path must be new. The runners create fresh owned fixture roots automatically and print their paths. Use `--profile smoke` for reduced development checks, which do not establish full-scale acceptance. The success runner accepts `--keep` to retain a successful fixture. The fault runner accepts one phase and one mode for reproduction. `--phase all` runs 27 cases; `--phase write-failures` selects the ten finer write-boundary cases, and `--phase concurrent-changes` selects four preservation cases. `--prepare-only --client-template <marked-root>` prepares a fixture containing only allowlisted synthetic native-client histories; the helper never copies authentication. `--fixture <owned-root>` runs a prepared fixture without regenerating its data. Reports and raw logs remain in the evidence directory; failed fixtures remain available for recovery. A nonzero exit or incomplete operation fails the runner; no timeout is a pass.
@@ -69,11 +69,11 @@ Each evidence path must be new. The runners create fresh owned fixture roots aut
 For each scenario, the runner invokes the real command with this argument structure, substituting absolute paths inside its own root:
 
 ```text
-pnpm --filter rename_agent_project start --from <root>/project --to <root>/renamed --codex-home <root>/codex --claude-home <root>/claude --claude-config <root>/claude/.claude.json --backup <root>/operation --apply
-pnpm --filter rename_agent_project start --status <root>/operation
-pnpm --filter rename_agent_project start --status <root>/operation --watch
-pnpm --filter rename_agent_project start --restore <root>/operation
-pnpm --filter rename_agent_project start --restore <root>/operation --apply
+pnpm start --from <root>/project --to <root>/renamed --codex-home <root>/codex --claude-home <root>/claude --claude-config <root>/claude/.claude.json --backup <root>/operation --apply
+pnpm start --status <root>/operation
+pnpm start --status <root>/operation --watch
+pnpm start --restore <root>/operation
+pnpm start --restore <root>/operation --apply
 ```
 
 Save command arguments, environment variable names (no credential values), versions, wall time, child and worker process identifiers, exit statuses, terminal operation state, peak resident memory for each worker, JavaScript heap limit, inventory, and raw standard output/error. The launching command's exit status alone is insufficient. Confirm the independent worker survives termination of its own initiating test process.

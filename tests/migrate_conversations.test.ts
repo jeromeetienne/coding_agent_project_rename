@@ -132,7 +132,7 @@ class MigrateConversationsTest {
 			const result = ChildProcess.spawnSync(process.execPath, [
 				'--import', import.meta.resolve('tsx'), '--input-type=module', '-e',
 				`import { Cli } from ${JSON.stringify(Path.join(__dirname, '../src/cli.ts'))};
-				await Cli.run(['node', 'rename_agent_project']).catch((error) => console.error(error.message));
+				await Cli.run(['node', 'coding_agent_project_rename']).catch((error) => console.error(error.message));
 				process.emitWarning('Other experimental feature', 'ExperimentalWarning');
 				process.emitWarning('Useful warning');`,
 			], {
